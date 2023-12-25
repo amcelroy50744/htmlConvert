@@ -1,26 +1,20 @@
 //Functional example
-import '../style/characterCard.css'
+import "../style/characterCard.css";
 import { Character } from "../data/characterData";
 
-type CharacterTypes = {
-  character: Character;
+type CharacterCardProp = {
+  character: Character[];
 };
-
-export function CharacterCard({
-  character: { name, nickName, imageUrl, background },
-}: CharacterTypes) {
-  return(
-  <div key={name} className="card">
-    {/* <!-- Card # --> */}
-    <div className="card-titles">
-      {/* <!-- name --> */}
-      <h3>{name}</h3>
-      {/* <!-- nickname --> */}
-      {nickName && <h4>{nickName}</h4>}
+export function CharacterCard({ character }: CharacterCardProp) {
+  const cardElements = character.map((card: Character) => (
+    <div key={card.name} className="card">
+      <div className="card-titles">
+        <h3>{card.name}</h3>
+        {card.nickName && <h4>{card.nickName}</h4>}
+      </div>
+      <img src={card.imageUrl} alt="" />
+      <p>{card.background}</p>
     </div>
-    {/* <!-- imageUrl --> */}
-    <img src={imageUrl} alt="" />
-    {/* <!-- description --> */}
-    <p>{background}</p>
-  </div>)
+  ));
+  return <section id="character-cards">{cardElements}</section>;
 }

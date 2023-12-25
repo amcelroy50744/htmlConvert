@@ -6,24 +6,13 @@ export type Character = {
   background: string;
   nickName: null | string;
 };
-export let DarkLightToggle: string = "light";
 export function sortCharacterCard(a: { votes: number }, b: { votes: number }) {
   if (a.votes > b.votes) {
     return -1;
   } else return 1;
 }
 
-export function IsThemeDark(answer: string) {
-  if (answer === "dark") {
-    DarkLightToggle = "light";
-    return "dark";
-  } else {
-    DarkLightToggle = "dark";
-    return "light";
-  }
-}
-
-export const data: Character[] = [
+export const characters: Character[] = [
   {
     name: "Alex Louis Armstrong",
     nickName: "Major Armstrong",
